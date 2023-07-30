@@ -7,13 +7,13 @@ import { createKnexDataProvider } from "remult/remult-knex"
 const users = [
   {
     id: '1',
-    name: 'Johne Doe',
+    name: 'John Doe',
     roles: ['admin'],
     token: 'a',
   },
   {
     id: '2',
-    name: 'Johne Doe',
+    name: 'Jane Doe',
     roles: ['user'],
     token: 'b'
   },
