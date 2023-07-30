@@ -2,7 +2,7 @@
 
 import { remultExpress } from 'remult/remult-express';
 import { Task } from '../shared/Task';
-import { remult } from 'remult';
+import { createKnexDataProvider } from "remult/remult-knex"
 
 const users = [
   {
@@ -22,6 +22,13 @@ const users = [
 export const api = remultExpress({
   rootPath: '/todo',
   entities: [Task],
+  dataProvider: createKnexDataProvider({
+    // Knex client configuration for SQLite
+    client: "sqlite3",
+    connection: {
+      filename: "./mydb.sqlite"
+    }
+  }),
   getUser: async (req) => {
     console.log('auth', req.headers.authorization);
 

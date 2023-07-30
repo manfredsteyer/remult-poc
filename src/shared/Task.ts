@@ -77,4 +77,7 @@ export class Task implements ProtectedEntity {
 
   @Fields.integer()
   userId?: number;
+
+  @Fields.string()
+  notes?: string;
 }
