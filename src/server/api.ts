@@ -2,7 +2,8 @@
 
 import { remultExpress } from 'remult/remult-express';
 import { Task } from '../shared/Task';
-import { createKnexDataProvider } from "remult/remult-knex"
+// import { createKnexDataProvider } from "remult/remult-knex"
+import { createPostgresConnection } from "remult/postgres"
 
 const users = [
   {
@@ -22,12 +23,15 @@ const users = [
 export const api = remultExpress({
   rootPath: '/todo',
   entities: [Task],
-  dataProvider: createKnexDataProvider({
-    // Knex client configuration for SQLite
-    client: "sqlite3",
-    connection: {
-      filename: "./mydb.sqlite"
-    }
+  // dataProvider: createKnexDataProvider({
+  //   // Knex client configuration for SQLite
+  //   client: "sqlite3",
+  //   connection: {
+  //     filename: "./mydb.sqlite"
+  //   }
+  // }),
+  dataProvider: createPostgresConnection({
+    connectionString: process.env["DATABASE_URL"] || "your connection string"
   }),
   getUser: async (req) => {
     console.log('auth', req.headers.authorization);
