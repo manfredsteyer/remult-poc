@@ -1,0 +1,9 @@
+<!-- src/app/todo/todo.component.html -->
+
+<h1>todos</h1>
+<main>
+  <div *ngFor="let task of tasks">
+    <input type="checkbox" [(ngModel)]="task.completed" />
+    {{task.title}}
+  </div>
+</main>
