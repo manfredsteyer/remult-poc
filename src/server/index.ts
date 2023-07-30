@@ -9,7 +9,7 @@ const app = express()
 app.use(api);
 
 const openApiDocument = api.openApiDoc({ title: "remult-react-todo" });
-app.get("/api/openApi.json", (req, res) => res.json(openApiDocument));
-app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(openApiDocument));
+app.get("/todo/openApi.json", (req, res) => res.json(openApiDocument));
+app.use('/todo/docs', swaggerUi.serve, swaggerUi.setup(openApiDocument));
 
 app.listen(3002, () => console.log("Server started"))

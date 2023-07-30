@@ -20,14 +20,14 @@ const users = [
 ];
 
 export const api = remultExpress({
-  //rootPath: 'api',
+  rootPath: '/todo',
   entities: [Task],
   getUser: async (req) => {
     console.log('auth', req.headers.authorization);
 
     // POC: Can we use remult to resolve user?
-    const task = await remult.repo(Task).findId('j4ihw3zfw112ogmh1jnsu4m5');
-    console.log('task', task);
+    // const task = await remult.repo(Task).findId('j4ihw3zfw112ogmh1jnsu4m5');
+    // console.log('task', task);
 
     if (!req.headers.authorization) {
       return undefined;
